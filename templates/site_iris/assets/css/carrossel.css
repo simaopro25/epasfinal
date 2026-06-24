@@ -1,0 +1,76 @@
+.carousel-container {
+  position: relative;
+}
+
+/* overlay leve */
+.carousel-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+/* TEXTO + BOTÕES */
+.carousel-overlay {
+  position: absolute;
+  left: 120px;
+  bottom: 90px;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+  max-width: 520px;
+}
+
+/* TÍTULO */
+.carousel-overlay h2 {
+  color: #ffffff;
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+/* BOTÕES BASE */
+.carousel-overlay a {
+  width: 320px;
+  padding: 18px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* BOTÃO AZUL */
+.btn-ep-blue {
+  background-color: #244CA3;
+  color: #ffffff;
+  border: 2px solid #244CA3;
+}
+
+.btn-ep-blue:hover {
+  background-color: #1d3f8c;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  color: #ffffff; /* força branco */
+}
+
+/* BOTÃO BRANCO */
+.btn-ep-white {
+  background-color: #ffffff;
+  color: #244CA3;
+  border: 2px solid #ffffff;
+}
+
+.btn-ep-white:hover {
+  background-color: #f2f2f2;
+  color: #244CA3; /* mantém azul */
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}

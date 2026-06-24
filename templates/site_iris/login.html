@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EPAS | Login</title>
+
+</head>
+<link href="/templates/site_iris/assets/css/login.css" rel="stylesheet">
+<body>
+
+    <div class="main">
+        <h1>EPAS</h1>
+        <h3>Acesso à plataforma do programa EPAS</h3>
+
+        <form action="/public/autenticacao/validacaoLogin" method="post">
+            <label for="first">Nome de utilizador</label>
+            <input type="text" id="user" name="user" placeholder="Introduza o seu nome de utilizador" required>
+
+            <label for="password">Palavra-passe</label>
+            <input type="password" id="passw" name="passw" placeholder="Introduza a sua palavra-passe" required>
+
+            <div class="wrap">
+                <button type="submit">Entrar</button>
+            </div>
+        </form>
+
+        <p style="margin-top: 20px;">
+            Não tem conta? <a href="/public/formulario">Candidate-se aqui</a>
+        </p>
+
+        <p style="margin-top: 20px;">
+            Não sabe a password? <a href="/public/recuperacao">Recupere-a aqui</a>
+        </p>
+        
+    </div>
+
+</body>
+</html>

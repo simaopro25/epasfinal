@@ -1,0 +1,40 @@
+ /* 1. Estilização do Overlay (Removido o cinzento) */
+  .card-img-overlay {
+    background: transparent !important; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Texto alinhado em baixo */
+    padding: 1.5rem;
+  }
+
+  /* 2. Estilo otimizado para legibilidade sobre a imagem */
+  .card-title {
+    color: #ffffff !important; 
+    font-family: var(--heading-font) !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.8); /* Sombra para destacar o texto */
+    margin-bottom: 0.2rem;
+  }
+
+  .card-text {
+    color: #ffffff !important;
+    font-family: var(--default-font) !important;
+    font-size: 0.95rem;
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.8);
+    margin-bottom: 1rem;
+  }
+
+  /* 3. Nitidez da imagem (Garante o preenchimento correto) */
+  .card-img-top {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Garante espaçamento entre cards */
+  .card {
+    border: none;
+    overflow: hidden;
+  }

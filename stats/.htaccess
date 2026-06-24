@@ -1,0 +1,7 @@
+AuthName "epas statistics"
+AuthType Basic
+AuthUserFile /home/epas/.stats-htpasswd
+require valid-user
+<Files .stats-htpasswd>
+Require all denied
+</Files>

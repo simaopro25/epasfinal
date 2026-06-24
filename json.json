@@ -1,0 +1,13 @@
+{
+    "1":
+    {
+        "18":{"ID":"18","Opcao":"Início","Ordem":"0","pai":"1","link":"","numElements":25,"msg":"ok","status":"200"},
+        "5":{"ID":"5","Opcao":"Quem somos?","Ordem":"5","pai":"1","link":""},
+        "2":{"ID":"2","Opcao":"O que fazemos?","Ordem":"10","pai":"1","link":""},
+        "3":{"ID":"3","Opcao":"Calendário de eventos","Ordem":"20","pai":"1","link":""},
+        "15":{"ID":"15","Opcao":"NOVA","Ordem":"22","pai":"1","link":""},
+        "4":{"ID":"4","Opcao":"Informações úteis","Ordem":"30","pai":"1","link":""},
+        "33":{"ID":"33","Opcao":"Contactos","Ordem":"80","pai":"1","link":""}
+    },
+    "2":{"23":{"ID":"23","Opcao":"Boas práticas","Ordem":"11","pai":"2","link":""},
+        "24":{"ID":"24","Opcao":"Testemunhos e galeria","Ordem":"12","pai":"2","link":""},"25":{"ID":"25","Opcao":"Calendário de atividades","Ordem":"13","pai":"2","link":""}},"3":{"26":{"ID":"26","Opcao":"Eventos futuros","Ordem":"21","pai":"3","link":""},"27":{"ID":"27","Opcao":"Projectos em curso","Ordem":"22","pai":"3","link":""},"28":{"ID":"28","Opcao":"Arquivos de eventos","Ordem":"23","pai":"3","link":""}},"4":{"9":{"ID":"9","Opcao":"Material didatico","Ordem":"0","pai":"4","link":""},"12":{"ID":"12","Opcao":"Notícias UE","Ordem":"0","pai":"4","link":""},"10":{"ID":"10","Opcao":"Instituições UE","Ordem":"0","pai":"4","link":""},"11":{"ID":"11","Opcao":"Europe Directs","Ordem":"0","pai":"4","link":""},"29":{"ID":"29","Opcao":"Material Didático","Ordem":"31","pai":"4","link":""},"30":{"ID":"30","Opcao":"Instituições da UE","Ordem":"32","pai":"4","link":""},"31":{"ID":"31","Opcao":"Europe Directs","Ordem":"33","pai":"4","link":""},"32":{"ID":"32","Opcao":"Notícias da UE","Ordem":"34","pai":"4","link":""}},"5":{"19":{"ID":"19","Opcao":"Missão e valores","Ordem":"5","pai":"5","link":""},"20":{"ID":"20","Opcao":"Equipa Coordenadora","Ordem":"6","pai":"5","link":""},"21":{"ID":"21","Opcao":"Escolas participantes","Ordem":"7","pai":"5","link":""},"22":{"ID":"22","Opcao":"Como aderir à rede","Ordem":"8","pai":"5","link":""}}}

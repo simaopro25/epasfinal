@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Administração EPAS</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">  
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="/templates/sb-admin/css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="/imagens/European_Parliament_logo.ico">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand ps-3" href="/public/admin">Administração EPAS</a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/imagens/user.png" class="rounded-circle" alt="" id="photo" width="40" height="40">
+                    </a>    
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a id="name" class="dropdown-item" href="#">...</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a id="btnTrocarFoto" class="dropdown-item" href="/public/admin/escolas/editar" style="cursor: pointer;">📷 Definições</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a onclick="aut.logout()" class="dropdown-item" href="#">🚪 Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <div menu="/templates/sb-admin/sidemenu.html"></div>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-5">
+                        <h1 class="mt-5">EPAS</h1>
+                        <ol class="breadcrumb mb-5">
+                            <li class="breadcrumb-item active">Painel de Administração</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Número de Escolas:</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between" id="numEscolas"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Distritos:</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between" id="numTipoEscolas"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Notícias:</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between" id="numNoticias"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Categorias:</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between" id="numCategorias"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Menus:</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between" id="numMenus"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Número de notícias por dia (Últimos 7 dias)
+                                    </div>
+                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Número de acessos
+                                    </div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Atualizações
+                            </div>
+                            <div class="card-body">
+                                <table id="simples">
+                                    <thead>
+                                        <tr>
+                                            <th>Escola</th>
+                                            <th>Categoria</th>
+                                            <th>Notícia</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Escola</th>
+                                            <th>Categoria</th>
+                                            <th>Notícia</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="tabNot">
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/templates/sb-admin/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        
+        <script src="/templates/sb-admin/assets/demo/chart-bar-demo.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="/js/code/config.js" crossorigin="anonymous"></script>
+        <script src="/js/code/login.js" crossorigin="anonymous"></script>
+        <script src="/js/code/html.js" crossorigin="anonymous"></script>
+
+        <script>
+            var aut=new login()
+            aut.renderAutentica()
+            aut.GetId()
+
+            async function uploadFoto() {
+                const file = document.getElementById('inputFoto').files[0];
+                const msgDiv = document.getElementById('mensagemStatus');
+                
+                if (!file) {
+                    msgDiv.innerHTML = '<span style="color:red;">Selecione um ficheiro primeiro</span>';
+                    return;
+                }
+                
+                if (file.size > 2 * 1024 * 1024) {
+                    msgDiv.innerHTML = '<span style="color:red;">Ficheiro muito grande (max 2MB)</span>';
+                    return;
+                }
+                
+                msgDiv.innerHTML = '<span style="color:blue;">A enviar...</span>';
+                
+                const formData = new FormData();
+                formData.append('foto', file);
+                formData.append('escola_id', escolaIdAtual);
+                
+                try {
+                    const response = await fetch('https://epas.alunos.esmonserrate.org/public/api/escola/upload-foto', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const resultado = await response.json();
+                    
+                    if (resultado.success) {
+                        document.getElementById('photo').src = resultado.foto_url + '?t=' + Date.now();
+                        msgDiv.innerHTML = '<span style="color:green;">✅ Foto atualizada!</span>';
+                        setTimeout(() => {
+                            fecharModal();
+                            msgDiv.innerHTML = '';
+                            document.getElementById('inputFoto').value = '';
+                        }, 2000);
+                    } else {
+                        msgDiv.innerHTML = '<span style="color:red;">❌ Erro: ' + (resultado.message || 'Tenta novamente') + '</span>';
+                    }
+                } catch (error) {
+                    console.error('Erro:', error);
+                    msgDiv.innerHTML = '<span style="color:red;">❌ Erro de ligação ao servidor</span>';
+                }
+            }
+        </script>
+
+        <script> 
+            const readAPI = async () => {
+                let strHtml = ``
+                const response = await fetch("https://epas.alunos.esmonserrate.org/public/api/noticia")
+                const dataArray = await response.json()
+                
+                let contagemPorDia = {};
+
+                for (const dataRecord of dataArray) {
+                    strHtml += `
+                        <tr>
+                            <td>${dataRecord.nomeEscola}</td>
+                            <td>${dataRecord.nomeCategoria}</td>
+                            <td>${dataRecord.Titulo}</td>
+                            <td>${dataRecord.Data}</td>
+                        </tr>
+                    `
+                    
+                    if(dataRecord.Data && dataRecord.nomeCategoria === "Notícias") {
+                        try {
+                            let dataLimpa = dataRecord.Data.split(" ")[0]; 
+                            if(dataLimpa) {
+                                contagemPorDia[dataLimpa] = (contagemPorDia[dataLimpa] || 0) + 1;
+                            }
+                        } catch(e) {
+                            console.error("Erro na data:", e);
+                        }
+                    }
+                }
+                
+                document.getElementById("tabNot").innerHTML = strHtml;
+                new simpleDatatables.DataTable("#simples");
+
+                // --- LÓGICA DE GERAR ESTRUTURA PARA 7 DIAS ---
+                let labelsExibicao = [];
+                let totaisNoticias = [];
+                
+                // Gerar as datas dos últimos 7 dias dinamicamente
+                for (let i = 6; i >= 0; i--) {
+                    let d = new Date();
+                    d.setDate(d.getDate() - i);
+                    
+                    // Formato para buscar no objeto contagemPorDia (AAAA-MM-DD)
+                    let ano = d.getFullYear();
+                    let mes = String(d.getMonth() + 1).padStart(2, '0');
+                    let dia = String(d.getDate()).padStart(2, '0');
+                    let chaveData = `${ano}-${mes}-${dia}`;
+                    
+                    // Formato visual para o eixo X do gráfico (DD/MM)
+                    labelsExibicao.push(`${dia}/${mes}`);
+                    
+                    // Se houver notícias nesse dia usa o valor, senão coloca 0
+                    totaisNoticias.push(contagemPorDia[chaveData] || 0);
+                }
+
+                renderizarGraficoNoticias(labelsExibicao, totaisNoticias);
+            }
+
+            function renderizarGraficoNoticias(labels, valores) {
+                Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+                Chart.defaults.global.defaultFontColor = '#292b2c';
+
+                var ctx = document.getElementById("myAreaChart");
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: "Notícias Criadas",
+                            lineTension: 0.3,
+                            backgroundColor: "rgba(2,117,216,0.2)",
+                            borderColor: "rgba(2,117,216,1)",
+                            pointRadius: 5,
+                            pointBackgroundColor: "rgba(2,117,216,1)",
+                            pointBorderColor: "rgba(2,117,216,1)",
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                            pointHitRadius: 50,
+                            pointBorderWidth: 2,
+                            data: valores
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{ gridLines: { display: false } }],
+                            yAxes: [{ ticks: { min: 0, stepSize: 1 }, gridLines: { color: "rgba(0, 0, 0, .125)" } }]
+                        },
+                        legend: { display: false }
+                    }
+                });
+            }
+
+            const numEscolas = async () => {
+                const response = await fetch("https://epas.alunos.esmonserrate.org/public/api/escolas/numero")
+                const dataArray = await response.json()
+                document.getElementById("numEscolas").innerHTML = dataArray[0].numEscolas;
+            }
+
+            const numCategorias = async () => {
+                const response = await fetch("https://epas.alunos.esmonserrate.org/public/api/categorias")
+                const dataArray = await response.json()
+                document.getElementById("numCategorias").innerHTML = dataArray[0].numCategorias;
+            }
+
+            const numNoticias = async () => {
+                const response = await fetch("https://epas.alunos.esmonserrate.org/public/api/noticias")
+                const dataArray = await response.json()
+                document.getElementById("numNoticias").innerHTML = dataArray[0].numNoticias;
+            }
+
+            const numTipoEscolas = async () => {
+                const response = await fetch("https://epas.alunos.esmonserrate.org/public/api/tipoescolas")
+                const dataArray = await response.json()
+                document.getElementById("numTipoEscolas").innerHTML = dataArray[0].numElements;
+            }
+
+            const numMenus = async () => {
+                const response = await fetch("https://epas.alunos.esmonserrate.org/public/api/menu/contar")
+                const dataArray = await response.json()
+                document.getElementById("numMenus").innerHTML = dataArray[0].numMenus;
+            }
+
+            includeHTML("menu");
+
+            readAPI();
+            numEscolas();
+            numCategorias();
+            numNoticias();
+            numTipoEscolas();
+            numMenus();
+        </script>
+
+        <div id="modalTrocarFoto" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+            <div style="background: white; padding: 2rem; border-radius: 10px; width: 90%; max-width: 400px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                    <h5>Trocar Foto da Escola</h5>
+                    <span onclick="fecharModal()" style="cursor: pointer; font-size: 1.5rem;">&times;</span>
+                </div>
+                <img id="previewFoto" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; display: block;" src="/imagens/user.png">
+                <input type="file" id="inputFoto" accept="image/*" class="form-control mb-3">
+                <button class="btn btn-primary w-100" onclick="uploadFoto()">Carregar Foto</button>
+                <div id="mensagemStatus" style="margin-top: 1rem; display: none;"></div>
+            </div>
+        </div>
+    </body>
+</html>

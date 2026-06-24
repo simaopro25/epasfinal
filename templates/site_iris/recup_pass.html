@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EPAS | Recuperar Password</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <!-- CSS -->
+    <link href="/templates/site_iris/assets/css/recup_pass.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="recover-container">
+      <div class="recover-card">
+        <!-- Stepper / Progresso -->
+        <div class="step-progress">
+          <div class="step-item" data-step="1" onclick="navigateToStep(1)">
+            <div class="step-circle" id="step1Circle">1</div>
+            <div class="step-label">Email</div>
+          </div>
+          <div class="step-item" data-step="2" onclick="navigateToStep(2)">
+            <div class="step-circle" id="step2Circle">2</div>
+            <div class="step-label">Código</div>
+          </div>
+          <div class="step-item" data-step="3" onclick="navigateToStep(3)">
+            <div class="step-circle" id="step3Circle">3</div>
+            <div class="step-label">Nova Password</div>
+          </div>
+        </div>
+
+        <div class="recover-header" id="headerContent"></div>
+
+        <!-- Mensagem de alerta -->
+        <div id="alertMessage" class="alert-message"></div>
+
+        <!-- Passo 1: Email -->
+        <div id="step1" class="step-container">
+          <form id="step1Form">
+            <div class="form-floating">
+              <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required />
+              <label><i class="bi bi-envelope me-2"></i>Email</label>
+            </div>
+            <button type="submit" class="btn-recover" id="btnStep1">
+              <span class="spinner" id="spinnerStep1"></span>
+              <span>Enviar Código</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Passo 2: Código de Verificação -->
+        <div id="step2" class="step-container">
+          <form id="step2Form">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="code" placeholder="XXXXXX" required maxlength="6" />
+              <label><i class="bi bi-shield-lock me-2"></i>Código de Verificação</label>
+            </div>
+            <div class="info-text" id="emailInfo">
+              <i class="bi bi-info-circle"></i>
+              Digite o código de 6 dígitos enviado para o seu email
+            </div>
+            <button type="submit" class="btn-recover" id="btnStep2">
+              <span class="spinner" id="spinnerStep2"></span>
+              <span>Verificar Código</span>
+            </button>
+            <button type="button" class="btn-recover" id="btnResendCode" style="background: #6c757d; margin-top: 10px">
+              <i class="bi bi-arrow-repeat me-2"></i>Reenviar Código
+            </button>
+          </form>
+        </div>
+
+        <!-- Passo 3: Nova Password -->
+        <div id="step3" class="step-container">
+          <form id="step3Form">
+            <!-- Campo oculto com o email do utilizador -->
+            <input type="hidden" id="userEmail" name="email" value="" />
+            <div class="form-floating">
+              <input type="password" class="form-control" id="password" placeholder="Password" required autocomplete="new-password" />
+              <label><i class="bi bi-lock me-2"></i>Nova Password</label>
+            </div>
+
+            <!-- Indicador de força da password -->
+            <div class="password-strength">
+              <div class="password-strength-bar" id="passwordStrengthBar"></div>
+            </div>
+            <div class="strength-text" id="strengthText">Digite uma password</div>
+
+            <div class="form-floating">
+              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar password" required autocomplete="new-password" />
+              <label><i class="bi bi-lock-fill me-2"></i>Confirmar password</label>
+            </div>
+
+            <button type="submit" class="btn-recover" id="btnStep3">
+              <span class="spinner" id="spinnerStep3"></span>
+              <span>Alterar Password</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="back-to-login">
+          <a href="/public/login"> <i class="bi bi-arrow-left"></i> Voltar para o login </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/code/html.js"></script>
+    <script src="/js/code/alert.js"></script>
+    <script src="/templates/site_iris/assets/js/recpass.js"></script>
+  </body>
+</html>

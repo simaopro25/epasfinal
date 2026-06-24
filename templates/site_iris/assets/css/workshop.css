@@ -1,0 +1,14 @@
+    /* Estilo do Título e Parágrafo */
+    .section-title { text-align: center; padding-bottom: 60px; position: relative; }
+    .section-title h2 { font-size: 36px; font-weight: 700; color: #244CA3; margin-bottom: 25px; text-transform: uppercase; font-family: "Raleway", sans-serif; }
+    .section-title p { margin-bottom: 0; color: #7B8383; font-family: "Roboto", sans-serif; }
+    @media (max-width: 768px) { .section-title h2 { font-size: 26px; } }
+
+    /* Cards com Efeito Hover Azul */
+    .icon-box { background: #ffffff; padding: 30px; border-radius: 18px; text-align: center; height: 100%; border: 2px solid #003399; box-shadow: 0 15px 35px rgba(36, 76, 163, 0.10); transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .icon-box h4 { font-size: 22px; font-weight: 600; color: #003399; margin-bottom: 18px; position: relative; z-index: 2; transition: color 0.3s ease; }
+    .icon-box video { position: relative; z-index: 2; border-radius: 8px; }
+    .icon-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #003399; opacity: 0; transition: opacity 0.4s ease; z-index: 1; }
+    .icon-box:hover::before { opacity: 0.9; }
+    .icon-box:hover h4 { color: #ffffff !important; }
+    .icon-box:hover { transform: translateY(-10px); }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPAS PT | Mapas</title>
+</head>
+<body>
+    <input type="text" id="morada" placeholder="Escreva a morada">
+    <input type="text" id="lat" placeholder="Latitude" readonly>
+    <input type="text" id="long" placeholder="Longitude" readonly>
+    <button onclick="procura()">Procurar</button>
+
+    <script>
+        const procura = async () => {
+            // 1. Obter o texto do input
+            const moradaTexto = document.getElementById("morada").value;
+            
+            if (!moradaTexto) {
+                alert("Por favor, introduza uma morada.");
+                return;
+            }
+
+            try {
+                // 2. Fazer o fetch
+                const url = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(moradaTexto)}&apiKey=e86d1fb782424584b0fcac6353898a4e`;
+                const resposta = await fetch(url);
+                const data = await resposta.json();
+console.log(data)
+                // 3. Verificar se encontrou resultados
+                if (data.features && data.features.length > 0) {
+                    const result = data.features[0].geometry.coordinates;
+                    const longitude = result[0];
+                    const latitude = result[1];
+
+                    // 4. Preencher os inputs automaticamente
+                    document.getElementById("lat").value = latitude;
+                    document.getElementById("long").value = longitude;
+                } else {
+                    alert("Morada não encontrada.");
+                }
+            } catch (error) {
+                console.error("Erro ao procurar:", error);
+                alert("Ocorreu um erro ao comunicar com o servidor.");
+            }
+        }
+    </script>
+</body>
+</html>

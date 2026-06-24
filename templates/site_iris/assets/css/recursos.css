@@ -1,0 +1,14 @@
+/* IMAGENS SITE */
+.portfolio-item img {
+    width: 100%;           /* Ocupa a largura total da coluna */
+    height: 250px;         /* ALTURA FIXA: garante que todos os cards têm o mesmo tamanho */
+    object-fit: cover;     /* REGRA DE OURO: corta a imagem para caber sem a "esticar" */
+    object-position: center; /* Foca no centro da imagem ao cortar */
+    border-radius: 8px;    /* Cantos arredondados para um aspeto moderno */
+    transition: transform 0.3s ease; /* Efeito suave ao passar o rato */
+}
+
+/* Efeito opcional: a imagem aumenta ligeiramente quando passas o rato */
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}

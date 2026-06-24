@@ -1,0 +1,263 @@
+/* ==================================================
+   O QUE É O PROGRAMA
+================================================== */
+
+#about {
+    background: linear-gradient(180deg, #F4F7FB 0%, #FFFFFF 100%);
+    padding: 120px 0 100px 0;
+  }
+  
+  #about .section-title {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  #about h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #244CA3;
+    margin-bottom: 25px;
+  }
+  
+  .section-divider {
+    width: 100px;
+    height: 5px;
+    background-color: #244CA3;
+    margin: 0 auto 35px auto;
+    border-radius: 20px;
+  }
+  
+  #about p {
+    font-size: 19px;
+    line-height: 1.9;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+/* ==================================================
+   BLOCOS MELHORADOS
+================================================== */
+
+.icon-box {
+  background: #ffffff;
+  padding: 55px 35px;
+  border-radius: 18px;
+  text-align: center;
+  height: 100%;
+
+  border: 2px solid #244CA3;
+  box-shadow: 0 15px 35px rgba(36, 76, 163, 0.10);
+
+  transition: all 0.35s ease;
+}
+
+/* TÍTULO */
+.icon-box h4 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #244CA3;
+  margin-bottom: 18px;
+  transition: color 0.3s ease;
+}
+
+/* TEXTO */
+.icon-box p {
+  font-size: 16px;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+/* LINK */
+.icon-box a {
+  display: inline-block;
+  margin-top: 20px;
+
+  color: #244CA3 !important;
+  text-decoration: none !important;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.icon-box:hover {
+  transform: translateY(-6px);
+  background-color: #244CA3;
+  box-shadow: 0 20px 45px rgba(36, 76, 163, 0.25);
+}
+
+/* TEXTO BRANCO */
+.icon-box:hover h4,
+.icon-box:hover p,
+.icon-box:hover a,
+.icon-box:hover a:visited,
+.icon-box:hover a:hover {
+  color: #ffffff !important;
+}
+  
+/* ==================================================
+   ESTATÍSTICAS
+================================================== */
+
+#stats {
+    background-color: #244CA3;
+    padding: 80px 0;
+    color: #ffffff;
+  }
+  
+  #stats h2 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 50px;
+  }
+  
+  #stats .stats-item {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #stats .stats-item span {
+    font-size: 60px;
+    font-weight: 700;
+    color: #ffffff !important; /* FORÇA BRANCO */
+    display: block;
+    margin-bottom: 12px;
+  }
+  
+  #stats .stats-item p {
+    font-size: 18px;
+    color: #ffffff !important; /* FORÇA BRANCO */
+    font-weight: 500;
+  }
+  
+  
+  
+  
+  /* ==================================================
+     ESPAÇAMENTO ENTRE SECÇÕES
+  ================================================== */
+  
+  .section {
+    position: relative;
+  }
+  
+  
+  /* ==================================================
+     RESPONSIVO
+  ================================================== */
+  
+  @media (max-width: 768px) {
+  
+    #about {
+      padding: 80px 20px;
+    }
+  
+    #stats {
+      padding: 80px 20px;
+    }
+  
+    #about h2,
+    #stats h2 {
+      font-size: 26px;
+    }
+  
+    .stats-item span {
+      font-size: 42px;
+    }
+  
+  }
+  
+
+        body { overflow-x: hidden; background-color: #f8f9fa; }
+        .mapa {
+            width: 100%; max-width: 100%; height: 500px; margin: 0 auto;
+            border-radius: 18px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid white; transition: transform 0.3s ease-in-out;
+        }
+        .mapa:hover { transform: scale(1.03); }
+        .mapa-col { margin-bottom: 40px; }
+        h2 { color: #244CA3; margin-bottom: 20px; }
+
+
+ /* IMAGENS SITE */
+ .portfolio-item img {
+  width: 100%;           /* Ocupa a largura total da coluna */
+  height: 250px;         /* ALTURA FIXA: garante que todos os cards têm o mesmo tamanho */
+  object-fit: cover;     /* REGRA DE OURO: corta a imagem para caber sem a "esticar" */
+  object-position: center; /* Foca no centro da imagem ao cortar */
+  border-radius: 8px;    /* Cantos arredondados para um aspeto moderno */
+  transition: transform 0.3s ease; /* Efeito suave ao passar o rato */
+}
+
+/* Efeito opcional: a imagem aumenta ligeiramente quando passas o rato */
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+
+
+.noticia-card-custom {
+  /* Bordas e cores consistentes com o tema */
+  border: 3px solid var(--surface-color);
+  background-color: var(--surface-color);
+
+  /* Sombra inspirada no estilo geral do site */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  /* Transição suave para hover */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+  border-radius: 10px; /* Recomendado para suavizar as bordas */
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.noticia-card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+/*EUROSCOLA
+
+  /* IMAGENS SITE */
+  .portfolio-item img {
+    width: 100%;           /* Ocupa a largura total da coluna */
+    height: 250px;         /* ALTURA FIXA: garante que todos os cards têm o mesmo tamanho */
+    object-fit: cover;     /* REGRA DE OURO: corta a imagem para caber sem a "esticar" */
+    object-position: center; /* Foca no centro da imagem ao cortar */
+    border-radius: 8px;    /* Cantos arredondados para um aspeto moderno */
+    transition: transform 0.3s ease; /* Efeito suave ao passar o rato */
+}
+
+/* Efeito opcional: a imagem aumenta ligeiramente quando passas o rato */
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+
+
+
+/* Link personalizado para o botão integrado, herdando as cores do teu template */
+.link-coordenacao {
+  color: #1d4ed8; /* Usa a cor azul padrão do teu projeto */
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.link-coordenacao:hover {
+  color: #1e40af;
+  text-decoration: underline;
+}

@@ -1,0 +1,109 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: #f2f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* subtle background pattern */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                rgba(0, 64, 133, 0.05),
+                rgba(0, 114, 206, 0.05)
+            );
+            z-index: -1;
+        }
+
+        .main {
+            background: #ffffff;
+            padding: 35px 45px;
+            width: 360px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .main h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #003a8f;
+            letter-spacing: 1px;
+        }
+
+        .main h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #555;
+            font-weight: normal;
+            font-size: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #003a8f;
+        }
+
+        .wrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            background: #003a8f;
+            color: #fff;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #002c6d;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        p a {
+            color: #003a8f;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
